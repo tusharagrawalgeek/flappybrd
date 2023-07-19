@@ -66,7 +66,7 @@ function setup() {
     downobs[i].y = upobs[i].h + gap;
     downobs[i].h = height;
   }
-  // frameRate(60);
+  pixelDensity(1);
 }
 
 function draw() {
