@@ -44,10 +44,13 @@ let died = false;
 let limit = 10,//increase hardness after this time
   count = 0; 
 let started = false;
-
+let btn;
 function setup() {
   brd = loadImage('bird.png');
-  createCanvas(1200, 800);
+  btn=createCanvas(1200, 800);  
+  btn.mousePressed(touched);
+  // btn=createButton("Click");
+  // btn.mouseClicked(touched);
   bird.i = 200;
   bird.j = 100;
   for (let i = 0; i < n; i++) {
@@ -66,6 +69,7 @@ function setup() {
 }
 
 function draw() {
+  
   if (started) {
     if (!died) {
       time += 0.0167;
@@ -96,7 +100,7 @@ function draw() {
     makeObstacles();
     textSize(50);
     fill(255);
-    text("Press SPACE", 450, height / 2);
+    text("Press SPACE or touch the screen", 200, height / 2);
   }
 }
 function checkletersects() {
@@ -165,8 +169,8 @@ function gameover() {
   //strokeWeight(100);
   textSize(40);
 textStyle("light");
-  text("Score : " + Math.floor(time * 100) / 100.0 + "s", 400, height / 2);
-  text("Press SPACE", 400, height / 2 + 80);
+  text("Score : " + Math.floor(time * 100) / 100.0 + "s", 470, height / 2-100);
+  text("Press SPACE or touch screen", 350, height / 2 + 80-100);
   fill(255);
 }
 function diedfunc() {
@@ -208,7 +212,7 @@ function reset() {
   }
 }
 function keyPressed() {
-  if (key == " ") {
+  if (key === " ") {
     if (!started) {
       started = true;
     } else if (died) {
@@ -216,7 +220,15 @@ function keyPressed() {
       reset();
     } else jump();
   }
-  if (key == "d") died = true;
+  // if (key === "d") died = true;
+}
+function touched(){
+  if(!started){
+    started=true;
+  }else if(died){
+    died=false;
+    reset();
+  }else jump();
 }
 
 
