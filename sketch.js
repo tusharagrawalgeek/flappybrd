@@ -66,7 +66,7 @@ function setup() {
     downobs[i].y = upobs[i].h + gap;
     downobs[i].h = height;
   }
-  pixelDensity(1);
+  pixelDensity(0.1);
 }
 
 function draw() {
@@ -78,7 +78,7 @@ function draw() {
       time += 0.0167;
       background(color(50, 200, 200));
       frameRate(60);
-      text(getFrameRate().toFixed(0),0,50);
+      text(pixelDensity(),0,50);
       makebird();
       fallbird();
       makeObstacles();
