@@ -66,14 +66,19 @@ function setup() {
     downobs[i].y = upobs[i].h + gap;
     downobs[i].h = height;
   }
+  // frameRate(60);
 }
 
 function draw() {
-  
+//  setFrameRate(60);
+
   if (started) {
     if (!died) {
+      
       time += 0.0167;
       background(color(50, 200, 200));
+      frameRate(60);
+      text(getFrameRate().toFixed(0),0,50);
       makebird();
       fallbird();
       makeObstacles();
